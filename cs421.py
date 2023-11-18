@@ -130,12 +130,16 @@ adjacency_matrix = [
 k = 3
 
 # Find almost equal color sequence
-almost_equal_color_sequence = almost_equal_color_sequence_from_adjacency_matrix(adjacency_matrix, k, 6)
+almost_equal_color_sequence = None
 
-if (almost_equal_color_sequence != None):
-  visualize_graph(adjacency_matrix, almost_equal_color_sequence)
-  print_color_sequence(almost_equal_color_sequence)
-  display_vertices_by_color(almost_equal_color_sequence)
+while(almost_equal_color_sequence == None):
+  almost_equal_color_sequence = almost_equal_color_sequence_from_adjacency_matrix(adjacency_matrix, k, 6)
+
+  if (almost_equal_color_sequence == None): k += 1
+
+visualize_graph(adjacency_matrix, almost_equal_color_sequence)
+print_color_sequence(almost_equal_color_sequence)
+display_vertices_by_color(almost_equal_color_sequence)
 
 #=================================================================
 # End Test Case 1
@@ -155,12 +159,16 @@ random_adj_matrix = generate_random_simple_adjacency_matrix(num_nodes, edge_dens
 # Set the k value
 k = 5
 
-almost_equal_color_sequence = almost_equal_color_sequence_from_adjacency_matrix(random_adj_matrix, k, len(random_adj_matrix[0]))
+almost_equal_color_sequence = None
 
-if (almost_equal_color_sequence != None):
-  visualize_graph(random_adj_matrix, almost_equal_color_sequence)
-  print_color_sequence(almost_equal_color_sequence)
-  display_vertices_by_color(almost_equal_color_sequence)
+while(almost_equal_color_sequence == None):
+  almost_equal_color_sequence = almost_equal_color_sequence_from_adjacency_matrix(random_adj_matrix, k, len(random_adj_matrix[0]))
+
+  if (almost_equal_color_sequence == None): k += 1
+
+visualize_graph(random_adj_matrix, almost_equal_color_sequence)
+print_color_sequence(almost_equal_color_sequence)
+display_vertices_by_color(almost_equal_color_sequence)
 
 #=================================================================
 # End Test Case 2 (random nodes)
@@ -175,12 +183,16 @@ file_path = 'adjmatrix'
 # Read the adjacency matrix from the file
 adj_matrix, k, n = read_adjacency_matrix_from_file(file_path)
 
-color_sequence_from_file = almost_equal_color_sequence_from_adjacency_matrix(adj_matrix, k, n)
+color_sequence_from_file = None
 
-if (color_sequence_from_file != None):
-  visualize_graph(adj_matrix, color_sequence_from_file)
-  print_color_sequence(color_sequence_from_file)
-  display_vertices_by_color(color_sequence_from_file)
+while (color_sequence_from_file == None):
+   color_sequence_from_file = almost_equal_color_sequence_from_adjacency_matrix(adj_matrix, k, n)
+
+   if (color_sequence_from_file == None): k += 1
+
+visualize_graph(adj_matrix, color_sequence_from_file)
+print_color_sequence(color_sequence_from_file)
+display_vertices_by_color(color_sequence_from_file)
 
 #=================================================================
 # End Test Case 3 (reading from a file)
