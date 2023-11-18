@@ -1,4 +1,71 @@
-In the above code, we take an adjacency matrix, a `k` value, and a given matrix size `n` and derive an almost equal color sequence if one exists.
+# CS421 Project 2
+
+## Introduction
+
+This project is an implementation of an algorithm that finds an almost equal color sequence for a given graph. The algorithm utilizes libraries such as NumPy, NetworkX, and Matplotlib to create a graph and find a color sequence for it.
+
+## Installation
+
+To install the libraries needed for this project, you can use the following command:
+
+1. Setup virtual environment
+
+```
+python -m venv ~/.virtualenvs/irizarrymatthewcs421project
+```
+
+2. Activate virtual environment
+
+```
+source ~/.virtualenvs/irizarrymatthewcs421project/bin/activate
+```
+
+3. Install libraries
+
+```
+pip install -r requirements.txt
+```
+
+## About the program
+
+The program runs two predefined test cases. First, a 6x6 matrix provided by the professor. Second, is a 25x25 randomly populated graph, so that we can see how the algorithm performs on a larger scale. The program will output the adjacency matrix, the color sequence, and the graph itself. 
+
+HOWEVER, the task was to read from a file. Therefore, I have provided a third test case that reads data from file `adjmatrix`. It is only able to read from a file named `adjmatrix` and will not work with any other file. The file must be in the same directory as the program. Future versions of this program will allow for the user to specify a file to read from. 
+
+## Problem Solving
+
+So what was my approach for this problem? After much consideration, I figured the best approach would be to start coloring from the vertex with the most neighbors. This is because the more neighbors a vertex has, the more likely it is to have a color sequence. Therefore, I decided to sort the nodes by their degree, and then color them afterwards.
+
+Once the color sequence was found, if one exists, that color sequence is then used to print the almost equal color sequence, the colors and the vertices that they are assigned to, and finally a visual representation of the colored graph to verify that it was colored properly.
+
+## Data Structures Used
+
+The only data structures used in this solution is a 2D Array to represent the adjacency matrix, an array to represent the color sequence, and sets to represent the available colors for any given node.
+
+These are built into Python, and as such, I made sure to find documentation about their complexities. The complexities are broken down in the complexity analysis, and each library function has their complexity cited from a credible source.
+
+## Major Functions
+
+The only real major function used here is the one to determine the almost equal color sequence. However, here is a list of all the functions:
+
+- `almost_equal_color_sequence_from_adjacency_matrix()`
+- `print_color_sequence()`
+- `display_vertices_by_color()`
+- `visualize_graph()`
+- `generate_random_simple_adjacency_matrix()`
+- `read_adjacency_matrix_from_file()`
+
+
+## Complexity Analysis
+
+There are a few helper functions, as are listed above, such as to display the graph, and color sequence. However, the main function we will analyze is the `almost_equal_color_sequence_from_adj_matrix()`. I analyze the function below in great detail.
+
+In the function, we take:
+- an adjacency matrix
+- a `k` value
+- a given matrix size `n`
+
+Then derive an almost equal color sequence if one exists. There are a few steps that our algorithm takes to accomplish this.
 
 1. We must check to see if the matrix is valid and do other constant time operations:
 ```python
@@ -122,3 +189,42 @@ In the above code, we take an adjacency matrix, a `k` value, and a given matrix 
   ```
 
   Evaluating the limit is too much to put into a markdown document, however doing so gives you a result of `3` which is enough to satisfy this algorithm into Θ(n^2) complexity.
+
+  ## Testing
+
+  I provided three test cases that will run along with this program.
+
+  **TO USE YOUR OWN TEST CASES**
+
+  1. Create a file named `adjmatrix` in the same directory as the program. **NOTE: The file must be named `adjmatrix` and must be in the same directory as the program. You MUST OVERWRITE EXISTING file!**
+  2. Populate the file with a matrix of 0's and 1's. The matrix must be square. The format should look like this example file:
+
+  ```
+  3
+  6
+  0  1  1  0  0  0
+  1  0  1  1  0  0
+  1  1  0  0  1  1
+  0  1  0  0  0  1
+  0  0  1  0  0  1
+  0  0  0  1  1  0  
+  ```
+  3. Save the file and run the program. It will read from the file and output the results. In addition to this, it will also run the provided test cases every time.
+
+  ## Conclusion
+
+  The complexity of my solution is Θ(n^2). But we must answer the question: does it produce an optimal solution everytime? The answer is no, it does not. This is a simple greedy algorithm, and thus will get caught up in local optima. However, it does produce a solution that is almost equal to the optimal solution. Therefore, it is a good solution to the problem, but not the best.
+
+  Improvements could be made to the algorithm in the future as far as accuracy, but overall I am happy with the end result.
+
+  ## References
+
+  - [Python Wiki](https://wiki.python.org/moin/TimeComplexity)
+
+  - [Wikipedia](https://en.wikipedia.org/wiki/Timsort)
+
+  - [Wikipedia](https://en.wikipedia.org/wiki/Time_complexity)
+
+  - [Wikipedia](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics))
+
+  - [Microsoft](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/patsort-sigmod14.pdf)
