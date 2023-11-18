@@ -211,6 +211,12 @@ Then derive an almost equal color sequence if one exists. There are a few steps 
   ```
   3. Save the file and run the program. It will read from the file and output the results. In addition to this, it will also run the provided test cases every time.
 
+  ## **THESE TEST CASES HAVE ALREADY BEEN RAN AHEAD OF TIME ON GOOGLE COLAB**
+
+  To see the Google Collaboratory notebook, go to [this link](https://colab.research.google.com/drive/16XVFSQG1D9h8CZe5c2j80-4bGD7lr0ht). The code is broken down by segment so you can see exactly what each main function does, and how it performs. The provided adjmatrix file is already there, and has been executed on the notebook. The results are also there.
+
+  Feel free to run them again for yourself, or use your own test cases. The notebook is public, so you can make a copy of it and run it for yourself.
+
   ## Conclusion
 
   The complexity of my solution is Θ(n^2). But we must answer the question: does it produce an optimal solution everytime? The answer is no, it does not. This is a simple greedy algorithm, and thus will get caught up in local optima. However, it does produce a solution that is almost equal to the optimal solution. Therefore, it is a good solution to the problem, but not the best.
